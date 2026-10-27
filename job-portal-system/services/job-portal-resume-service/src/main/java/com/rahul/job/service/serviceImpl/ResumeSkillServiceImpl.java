@@ -46,9 +46,11 @@ public class ResumeSkillServiceImpl implements ResumeSkillService{
     public ResumeSkillResponse updateResumeSkill(Long skillId, Long resumeId, Long candidateId, createResumeSkillRequest req) throws Exception {
         ResumeSkill resumeSkill = getResumeSkillEntityById(resumeId);
         assertOwner(resumeSkill.getResume(),candidateId);
-        resumeSkill.setResume();
-        
-        return null;
+        resumeSkill.setSkillName(req.getSkillName());
+        resumeSkill.setProficiancyLevel(req.getProficiencyLevel());
+        resumeSkill.setYearsOfExperience(req.getYearsOfExperience());
+        if(req.getDisplayOrder() != null) resumeSkill.setDisplayOrder(req.getDisplayOrder());
+        return ResumeSkillMapper.toResponse(resumeSkillRepository.save(resumeSkill));
     }
 
     @Override
