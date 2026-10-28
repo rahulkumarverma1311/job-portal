@@ -1,25 +1,38 @@
 package com.rahul.job.service.serviceImpl;
 
 
-import com.rahul.job.dto.PersonalInformationResponse;
-import com.rahul.job.dto.ResumeResponse;
+import com.rahul.job.dto.*;
 import com.rahul.job.mapper.ResumeMapper;
+import com.rahul.job.mapper.ResumeSkillMapper;
+import com.rahul.job.mapper.WorkExperienceMapper;
+import com.rahul.job.model.Education;
 import com.rahul.job.model.PersonalInfo;
 import com.rahul.job.model.Resume;
 import com.rahul.job.payload.CreateResumeRequest;
-import com.rahul.job.repository.ResumeRepository;
+import com.rahul.job.repository.*;
 import com.rahul.job.service.ResumeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ResumeServiceImpl implements ResumeService {
 
     private final ResumeRepository resumeRepository;
+    private final WorkExperienceRepository workExperienceRepository;
+    private final LanguageRepository languageRepository;
+    private final EducationRepository educationRepository;
+    private final ResumeSkillRepository resumeSkillRepository;
+    private final AwardRepository awardRepository;
+    private final CertificationRepository certificationRepository;
+    private final ProjectRepository projectRepository;
+
 
     @Override
     public ResumeResponse createResume(Long candidateId, CreateResumeRequest req) {
@@ -144,7 +157,17 @@ public class ResumeServiceImpl implements ResumeService {
 
 
     private ResumeResponse buildFullResumeResponse(Resume resume) {
-        return ResumeMapper.toResponse(resume);
+        List<AwardResponse> awardResponses = awardRepository.findByResume_IdOrderByDisplayOrderAsc(resume.getId()).stream().map(ResumeMapper::toAwardResponse).toList();
+        List<WorkExperienceResponse> experienceResponses = workExperienceRepository.findByResume_idOrderByDisplayOrderAsc(resume.getId()).stream().map(WorkExperienceMapper::toResponse).toList();
+        List<CertificationResponse> certificationResponses = certificationRepository.findByResume_IdOrderByDisplayOrderAsc(resume.getId()).stream().map(ResumeMapper::toCertificationResponse).toList();
+        List<EducationResponse> educationResponses = educationRepository.findByResume_IdOrderByDisplayOrderAsc(resume.getId()).stream().map(ResumeMapper::toEducationResponse).toList();
+        List<LanguageResponse> languageResponses = languageRepository.findByResume_IdOrderByDisplayOrderAsc(resume.getId()).stream().map(ResumeMapper::toLanguageResponse).toList();
+            List<ResumeSkillResponse> resumeSkillResponses = resumeSkillRepository.findByResume_IdOrderByDisplayOrderAsc(resume.getId()).stream().map(ResumeSkillMapper::toResponse).toList();
+        List<ProjectResponse> projectResponses = projectRepository.findByResume_IdOrderByDisplayOrderAsc(resume.getId()).stream().map(ResumeMapper::toProjectResponse).toList();
+
+
+
+        return ResumeMapper.toResponse(resume,experienceResponses,educationResponses,resumeSkillResponses,projectResponses,languageResponses,awardResponses,certificationResponses);
     }
 
 

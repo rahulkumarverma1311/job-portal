@@ -10,11 +10,13 @@ import com.rahul.job.service.ResumeService;
 import com.rahul.job.service.WorkExperienceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class WorkExperienceServiceImpl implements WorkExperienceService {
 
     private final WorkExperienceRepository workExperienceRepository;
@@ -45,6 +47,7 @@ public class WorkExperienceServiceImpl implements WorkExperienceService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<WorkExperienceResponse> getWorkExperiences(Long resumeId) {
         return workExperienceRepository.findByResume_idOrderByDisplayOrderAsc(resumeId).stream().map(WorkExperienceMapper::toResponse).toList();
     }

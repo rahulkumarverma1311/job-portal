@@ -10,11 +10,13 @@ import com.rahul.job.service.ProjectService;
 import com.rahul.job.service.ResumeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ProjectServiceImpl implements ProjectService {
 
     private final ProjectRepository projectRepository;
@@ -41,8 +43,9 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ProjectResponse> getAllProjects(Long resumeId) {
-        return projectRepository.findByResume_IdOrderByDisplayOrderAse(resumeId).stream().map(ResumeMapper::toProjectResponse).toList();
+        return projectRepository.findByResume_IdOrderByDisplayOrderAsc(resumeId).stream().map(ResumeMapper::toProjectResponse).toList();
     }
 
     @Override

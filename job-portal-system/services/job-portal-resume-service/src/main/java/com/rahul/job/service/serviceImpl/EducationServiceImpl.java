@@ -43,7 +43,7 @@ public class EducationServiceImpl implements EducationService {
 
     @Override
     public List<EducationResponse> getEducations(Long resumeId) {
-        return educationRepository.findByResume_IdOrderByDisplayOrderAse(resumeId).stream().map(ResumeMapper::toEducationResponse).toList();
+        return educationRepository.findByResume_IdOrderByDisplayOrderAsc(resumeId).stream().map(ResumeMapper::toEducationResponse).toList();
     }
 
     @Override

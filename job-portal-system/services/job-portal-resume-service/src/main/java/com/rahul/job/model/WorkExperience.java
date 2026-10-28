@@ -38,7 +38,7 @@ public class WorkExperience {
     @Column(nullable = false)
     private Boolean isCurrentJob=false;
     private String description;
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> technologies = new ArrayList<>();
     @Column(nullable = false)
     private Integer displayOrder = 0;
