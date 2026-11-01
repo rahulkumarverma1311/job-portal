@@ -4,22 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9de6f907-6d92-49bc-8961-8baae7a40b7b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/common-lib/src/main/java/com/rahul/job/domain/AiShortListStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-lib/src/main/java/com/rahul/job/domain/ApplicationStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-lib/src/main/java/com/rahul/job/dto/ApplicationResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/model/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/payload/AddApplicationRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/payload/WithdrawApplicationRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/repository/ApplicationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/service/ApplicationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/service/impl/ApplicationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/services/pom.xml" afterDir="false" />
+    <list default="true" id="9de6f907-6d92-49bc-8961-8baae7a40b7b" name="Changes" comment="setup application service and creating apis for application entity">
+      <change afterPath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/controller/ApplicationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/mapper/ApplicationMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/payload/CompanyApplicationFilterRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/payload/UpdateApplicationStatusReq.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/repository/ApplicationSpecification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-lib/src/main/java/com/rahul/job/response/UserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-lib/src/main/java/com/rahul/job/response/UserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-lib/target/classes/com/rahul/job/response/UserResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/common-lib/target/classes/com/rahul/job/response/UserResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/model/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/model/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/repository/ApplicationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/repository/ApplicationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/service/ApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/service/ApplicationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/service/impl/ApplicationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-application-service/src/main/java/com/rahul/job/service/impl/ApplicationServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,18 +38,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "rahulkumarverma1311"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;rahulkumarverma1311&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/rahulkumarverma1311/job-portal.git",
-    "accountId": "4ad75a28-777a-41dc-81d2-ad6ded9eb55c"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/rahulkumarverma1311/job-portal.git&quot;,
+    &quot;accountId&quot;: &quot;4ad75a28-777a-41dc-81d2-ad6ded9eb55c&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -62,20 +59,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.JobPortalApplicationServiceApplication.executor": "Run",
-    "Maven.job-portal-application-service [clean...].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propCompiler"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.JobPortalApplicationServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.job-portal-application-service [clean...].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.rahul.job.payload" />
@@ -112,6 +109,19 @@
       <option name="presentableId" value="Default" />
       <updated>1793168244882</updated>
     </task>
+    <task id="LOCAL-00001" summary="setup application service and creating apis for application entity">
+      <option name="closed" value="true" />
+      <created>1793171526318</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1793171526318</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="setup application service and creating apis for application entity" />
+    <option name="LAST_COMMIT_MESSAGE" value="setup application service and creating apis for application entity" />
   </component>
 </project>
