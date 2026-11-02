@@ -6,9 +6,11 @@ import com.rahul.job.dto.CompanyResponse;
 import com.rahul.job.dto.JobResponse;
 import com.rahul.job.mapper.ApplicationMapper;
 import com.rahul.job.model.Application;
+import com.rahul.job.model.ApplicationNote;
 import com.rahul.job.payload.AddApplicationRequest;
 import com.rahul.job.payload.CompanyApplicationFilterRequest;
 import com.rahul.job.payload.WithdrawApplicationRequest;
+import com.rahul.job.repository.ApplicationNoteRepository;
 import com.rahul.job.repository.ApplicationRepository;
 import com.rahul.job.repository.ApplicationSpecification;
 import com.rahul.job.response.UserResponse;
@@ -25,6 +27,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 
 
     private final ApplicationRepository applicationRepository;
+
+    private final ApplicationNoteRepository applicationNoteRepository;
+
 
 
     @Override
@@ -142,7 +147,8 @@ public class ApplicationServiceImpl implements ApplicationService {
         JobResponse jobResponse = JobResponse.builder().id(application.getId()).build();
         CompanyResponse companyResponse = CompanyResponse.builder().id(application.getId()).build();
         UserResponse userResponse = UserResponse.builder().id(application.getId()).build();
-        return ApplicationMapper.toResponse(application,jobResponse,companyResponse,userResponse);
+        List<ApplicationNote> notes = applicationNoteRepository.findByApplicationId(application.getId());
+        return ApplicationMapper.toResponse(application,notes,jobResponse,companyResponse,userResponse);
     }
 
     private Sort buildSort(String sortBy) {

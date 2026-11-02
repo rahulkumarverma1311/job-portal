@@ -1,20 +1,26 @@
 package com.rahul.job.mapper;
 
+import com.rahul.job.domain.ApplicationStatus;
+import com.rahul.job.dto.ApplicationNoteResponse;
 import com.rahul.job.dto.ApplicationResponse;
 import com.rahul.job.dto.CompanyResponse;
 import com.rahul.job.dto.JobResponse;
 import com.rahul.job.model.Application;
+import com.rahul.job.model.ApplicationNote;
 import com.rahul.job.payload.AddApplicationRequest;
 import com.rahul.job.response.UserResponse;
+
+import java.util.List;
 
 public class ApplicationMapper {
 
     public static ApplicationResponse toResponse(Application application,
-//                                                 List<ApplicationNote> notes,
+                                                 List<ApplicationNote> notes,
                                                  JobResponse job,
                                                  CompanyResponse company,
-                                                 UserResponse candidate,
-//                                                 ApplicationScreening screening)
+                                                 UserResponse candidate
+//                                                 ApplicationScreening screening
+    )
                                                  {
 
         return ApplicationResponse.builder()
@@ -33,7 +39,7 @@ public class ApplicationMapper {
                 .availableFrom(application.getAvailableFrom())
                 .isStarred(application.getIsStarred())
 
-//                .notes(toNoteResponseList(notes))
+                .notes(notes.stream().map(ApplicationMapper::toNoteResponse).toList())
                 .withdrawnAt(application.getWithdrawnAt())
                 .withdrawnReason(application.getWithdrawnReason())
                 .appliedAt(application.getCreateAt())
@@ -54,7 +60,18 @@ public class ApplicationMapper {
                 .coverLetter(req.getCoverLetter())
                 .expectedSalary(req.getExpectedSalary())
                 .availableFrom(req.getAvailableFrom())
-                .build()
+                .status(ApplicationStatus.PENDING)
+                .build();
 
+    }
+
+
+    public static ApplicationNoteResponse toNoteResponse(ApplicationNote note) {
+        return ApplicationNoteResponse.builder()
+                .id(note.getId())
+                .addedByUserId(note.getAddedByUserId())
+                .content(note.getContent())
+                .createAt(note.getCreateAt())
+                .build();
     }
 }

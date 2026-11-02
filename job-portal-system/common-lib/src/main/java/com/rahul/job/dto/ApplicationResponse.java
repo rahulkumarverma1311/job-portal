@@ -39,7 +39,7 @@ public class ApplicationResponse {
     private Boolean isStarred;
 
 //    todo
-//    private List<ApplicationNoteResponse> statusHistory;
+    private List<ApplicationNoteResponse> notes;
 
     private LocalDateTime withdrawnAt;
     private String withdrawnReason;
